@@ -1,11 +1,16 @@
 package ma.ensa.GestionCours.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "etudiant", schema = "jee")
 public class Etudiant {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_etud", nullable = false)
     private Integer id;
 
@@ -21,13 +26,24 @@ public class Etudiant {
     @Column(name = "mdp", nullable = false, length = 50)
     private String mdp;
 
+    // Many-to-One avec Formation
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "fk_form", nullable = false)
-    private Formation fkForm;
+    @JoinColumn(name = "fk_form", referencedColumnName = "id_form", nullable = false)
+    @JsonBackReference // Évite les boucles infinies
+    private Formation formation;
 
+    // Many-to-One avec Semestre
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "fk_sem", nullable = false)
-    private Semestre fkSem;
+    @JoinColumn(name = "fk_sem", referencedColumnName = "id_sem", nullable = false)
+    @JsonBackReference // Évite les boucles infinies
+    private Semestre semestre;
+
+    // One-to-Many avec Note
+    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference // Gère la relation avec Note
+    private List<Note> notes;
+
+    // Getters et Setters
 
     public Integer getId() {
         return id;
@@ -69,20 +85,27 @@ public class Etudiant {
         this.mdp = mdp;
     }
 
-    public Formation getFkForm() {
-        return fkForm;
+    public Formation getFormation() {
+        return formation;
     }
 
-    public void setFkForm(Formation fkForm) {
-        this.fkForm = fkForm;
+    public void setFormation(Formation formation) {
+        this.formation = formation;
     }
 
-    public Semestre getFkSem() {
-        return fkSem;
+    public Semestre getSemestre() {
+        return semestre;
     }
 
-    public void setFkSem(Semestre fkSem) {
-        this.fkSem = fkSem;
+    public void setSemestre(Semestre semestre) {
+        this.semestre = semestre;
     }
 
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
+    }
 }

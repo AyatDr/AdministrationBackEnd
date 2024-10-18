@@ -1,25 +1,45 @@
 package ma.ensa.GestionCours.Model;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "matiere", schema = "jee")
 public class Matiere {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_mat", nullable = false)
     private Integer id;
 
     @Column(name = "label", nullable = false, length = 20)
     private String label;
 
+    // Many-to-One avec Professeur
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "fk_mod", nullable = false)
-    private Module fkMod;
+    @JoinColumn(name = "fk_prof", referencedColumnName = "id_prof", nullable = false)
+    @JsonBackReference // Évite les boucles infinies avec Professeur
+    private Prof professeur;
 
+    // Many-to-One avec Module
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "fk_prof", nullable = false)
-    private Prof fkProf;
+    @JoinColumn(name = "fk_mod", referencedColumnName = "id_mod", nullable = false)
+    @JsonBackReference // Évite les boucles infinies avec Module
+    private Module module;
+
+    // One-to-Many avec Cours
+    @OneToMany(mappedBy = "matiere", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference // Gère la relation avec Cours
+    private List<Cours> cours;
+
+    // One-to-Many avec Note
+    @OneToMany(mappedBy = "matiere", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference // Gère la relation avec Note
+    private List<Note> notes;
+
+    // Getters et Setters
 
     public Integer getId() {
         return id;
@@ -37,20 +57,35 @@ public class Matiere {
         this.label = label;
     }
 
-    public Module getFkMod() {
-        return fkMod;
+    public Prof getProfesseur() {
+        return professeur;
     }
 
-    public void setFkMod(Module fkMod) {
-        this.fkMod = fkMod;
+    public void setProfesseur(Prof professeur) {
+        this.professeur = professeur;
     }
 
-    public Prof getFkProf() {
-        return fkProf;
+    public Module getModule() {
+        return module;
     }
 
-    public void setFkProf(Prof fkProf) {
-        this.fkProf = fkProf;
+    public void setModule(Module module) {
+        this.module = module;
     }
 
+    public List<Cours> getCours() {
+        return cours;
+    }
+
+    public void setCours(List<Cours> cours) {
+        this.cours = cours;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
+    }
 }

@@ -1,14 +1,16 @@
 package ma.ensa.GestionCours.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "prof", schema = "jee")
 public class Prof {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_prof", nullable = false)
     private Integer id;
 
@@ -23,6 +25,18 @@ public class Prof {
 
     @Column(name = "email", nullable = false, length = 50)
     private String email;
+
+    // Relation One-to-One avec Formation
+    @OneToOne(mappedBy = "professeur", fetch = FetchType.LAZY)
+    @JsonBackReference // Évite les boucles infinies avec Formation
+    private Formation formation;
+
+    // Relation One-to-Many avec Matiere
+    @OneToMany(mappedBy = "professeur", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference // Gère la relation avec Matiere
+    private List<Matiere> matieres;
+
+    // Getters et Setters
 
     public Integer getId() {
         return id;
@@ -64,4 +78,19 @@ public class Prof {
         this.email = email;
     }
 
+    public Formation getFormation() {
+        return formation;
+    }
+
+    public void setFormation(Formation formation) {
+        this.formation = formation;
+    }
+
+    public List<Matiere> getMatieres() {
+        return matieres;
+    }
+
+    public void setMatieres(List<Matiere> matieres) {
+        this.matieres = matieres;
+    }
 }

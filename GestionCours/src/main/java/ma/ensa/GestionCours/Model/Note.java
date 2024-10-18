@@ -1,24 +1,33 @@
 package ma.ensa.GestionCours.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "note", schema = "jee")
 public class Note {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_note", nullable = false)
     private Integer id;
 
     @Column(name = "valeur", nullable = false)
     private Float valeur;
 
+    // Many-to-One avec Matiere
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "fk_mat", nullable = false)
-    private Matiere fkMat;
+    @JoinColumn(name = "fk_mat", referencedColumnName = "id_mat", nullable = false)
+    @JsonBackReference // Évite les boucles infinies avec Matiere
+    private Matiere matiere;
 
+    // Many-to-One avec Etudiant
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "fk_etud", nullable = false)
-    private Etudiant fkEtud;
+    @JoinColumn(name = "fk_etud", referencedColumnName = "id_etud", nullable = false)
+    @JsonBackReference // Évite les boucles infinies avec Etudiant
+    private Etudiant etudiant;
+
+    // Getters et Setters
 
     public Integer getId() {
         return id;
@@ -36,20 +45,19 @@ public class Note {
         this.valeur = valeur;
     }
 
-    public Matiere getFkMat() {
-        return fkMat;
+    public Matiere getMatiere() {
+        return matiere;
     }
 
-    public void setFkMat(Matiere fkMat) {
-        this.fkMat = fkMat;
+    public void setMatiere(Matiere matiere) {
+        this.matiere = matiere;
     }
 
-    public Etudiant getFkEtud() {
-        return fkEtud;
+    public Etudiant getEtudiant() {
+        return etudiant;
     }
 
-    public void setFkEtud(Etudiant fkEtud) {
-        this.fkEtud = fkEtud;
+    public void setEtudiant(Etudiant etudiant) {
+        this.etudiant = etudiant;
     }
-
 }
