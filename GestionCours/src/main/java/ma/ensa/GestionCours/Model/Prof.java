@@ -11,7 +11,7 @@ public class Prof {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_prof", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "nom", nullable = false, length = 10)
@@ -20,11 +20,12 @@ public class Prof {
     @Column(name = "prenom", nullable = false, length = 10)
     private String prenom;
 
-    @Column(name = "mdp", nullable = false, length = 50)
+    @Column(name = "mdp", nullable = false, length = 255)
     private String mdp;
 
     @Column(name = "email", nullable = false, length = 50)
     private String email;
+
 
     // Relation One-to-One avec Formation
     @OneToOne(mappedBy = "professeur", fetch = FetchType.LAZY)

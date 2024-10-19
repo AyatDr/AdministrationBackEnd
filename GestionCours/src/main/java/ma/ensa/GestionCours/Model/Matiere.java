@@ -19,7 +19,7 @@ public class Matiere {
 
     // Many-to-One avec Professeur
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "fk_prof", referencedColumnName = "id_prof", nullable = false)
+    @JoinColumn(name = "fk_prof", referencedColumnName = "id", nullable = false)
     @JsonBackReference // Évite les boucles infinies avec Professeur
     private Prof professeur;
 

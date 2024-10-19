@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 @Table(name = "directeur", schema = "jee")
 public class Directeur {
     @Id
-    @Column(name = "id_dir", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "nom", nullable = false, length = 10)
@@ -21,8 +21,10 @@ public class Directeur {
     @Column(name = "email", nullable = false, length = 50)
     private String email;
 
-    @Column(name = "mdp", nullable = false, length = 50)
+    @Column(name = "mdp", nullable = false, length = 255)
     private String mdp;
+
+
 
     public Integer getId() {
         return id;

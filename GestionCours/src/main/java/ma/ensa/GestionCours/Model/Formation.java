@@ -19,7 +19,7 @@ public class Formation {
     // One-to-One avec Professeur
     @OneToOne
     @JsonManagedReference // Gère la relation avec Professeur
-    @JoinColumn(name = "fk_prof", referencedColumnName = "id_prof", nullable = false)
+    @JoinColumn(name = "fk_prof", referencedColumnName = "id", nullable = false)
     private Prof professeur;
 
     // One-to-Many avec Semestre

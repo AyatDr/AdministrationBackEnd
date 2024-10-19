@@ -11,7 +11,7 @@ public class Etudiant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_etud", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "nom", nullable = false, length = 10)
@@ -23,8 +23,9 @@ public class Etudiant {
     @Column(name = "email", nullable = false, length = 50)
     private String email;
 
-    @Column(name = "mdp", nullable = false, length = 50)
+    @Column(name = "mdp", nullable = false, length = 255)
     private String mdp;
+
 
     // Many-to-One avec Formation
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

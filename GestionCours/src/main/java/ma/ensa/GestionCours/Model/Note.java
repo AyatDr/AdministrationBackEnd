@@ -23,7 +23,7 @@ public class Note {
 
     // Many-to-One avec Etudiant
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "fk_etud", referencedColumnName = "id_etud", nullable = false)
+    @JoinColumn(name = "fk_etud", referencedColumnName = "id", nullable = false)
     @JsonBackReference // Évite les boucles infinies avec Etudiant
     private Etudiant etudiant;
 
