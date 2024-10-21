@@ -49,7 +49,7 @@ public class AuthController {
 
     @GetMapping("/me")
     public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal Jwt jwt) {
-        String userEmail = jwt.getSubject(); // Correctly retrieves "admin@gmail.com"
+        String userEmail = jwt.getSubject();
         Map<String, String> userInfo = new HashMap<>();
         userInfo.put("email", userEmail);
         return ResponseEntity.ok(userInfo);

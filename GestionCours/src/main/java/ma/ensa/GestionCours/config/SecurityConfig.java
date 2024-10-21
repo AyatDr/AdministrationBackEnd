@@ -49,7 +49,8 @@ public class SecurityConfig {
                 // Configure authorization
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/login").permitAll()             // Autoriser l'accès à /api/login sans authentification
-                        .requestMatchers("/api/me").authenticated()            // Nécessite une authentification pour /api/me
+                        .requestMatchers("/api/me").authenticated()
+                        .requestMatchers("/api/formation/list").authenticated()
                         .anyRequest().permitAll()
                 )
                 // Configure OAuth2 Resource Server support
@@ -66,7 +67,6 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(List.of("http://localhost:4200")); // Allow Angular frontend
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-        configuration.setAllowCredentials(true); // Allow credentials (e.g., cookies)
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration); // Apply to all routes

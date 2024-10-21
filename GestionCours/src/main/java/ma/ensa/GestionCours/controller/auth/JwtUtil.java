@@ -38,14 +38,6 @@ public class JwtUtil {
                 .compact();
     }
 
-    // Extraire tous les claims depuis un token JWT
-    public Claims extractAllClaims(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
-    }
 
 
 
