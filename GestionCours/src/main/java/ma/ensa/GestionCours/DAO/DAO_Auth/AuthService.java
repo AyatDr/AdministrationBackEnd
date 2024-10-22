@@ -1,14 +1,10 @@
 package ma.ensa.GestionCours.DAO.DAO_Auth;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import ma.ensa.GestionCours.DAO.DAO_DIRECTEUR.DirecteurService;
-import ma.ensa.GestionCours.DAO.DAO_DIRECTEUR.EnsegnantService;
-import ma.ensa.GestionCours.DAO.DAO_DIRECTEUR.EtudiantService;
+import ma.ensa.GestionCours.Service.ServiceDirecteur.DirecteurService;
+import ma.ensa.GestionCours.Service.ServiceDirecteur.EnsegnantService;
+import ma.ensa.GestionCours.Service.ServiceDirecteur.EtudiantService;
 import ma.ensa.GestionCours.controller.auth.AuthResponse;
 import ma.ensa.GestionCours.controller.auth.JwtUtil;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import ma.ensa.GestionCours.Model.Directeur;
 import ma.ensa.GestionCours.Model.Prof;
 import ma.ensa.GestionCours.Model.Etudiant;

@@ -16,6 +16,12 @@ public class Formation {
     @Column(name = "label", nullable = false, length = 20)
     private String label;
 
+
+
+
+
+
+
     // One-to-Many avec Semestre
     @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference // Gère la relation avec Semestre
