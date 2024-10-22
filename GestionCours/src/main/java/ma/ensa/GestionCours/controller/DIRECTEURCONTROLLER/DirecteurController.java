@@ -16,8 +16,6 @@ public class DirecteurController {
     @Autowired
     private  FormationService formationService;
 
-   
-
     @GetMapping("/formation/list")
     public List<Formation> getAllFormations() {
         return formationService.getAllFormations();

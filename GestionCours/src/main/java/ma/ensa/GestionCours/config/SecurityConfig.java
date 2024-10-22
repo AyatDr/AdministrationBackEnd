@@ -48,9 +48,13 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 // Configure authorization
                 .authorizeHttpRequests(auth -> auth
+
                         .requestMatchers("/api/login").permitAll()             // Autoriser l'accès à /api/login sans authentification
                         .requestMatchers("/api/me").authenticated()
                         .requestMatchers("/api/formation/list").authenticated()
+
+                     // Require authentication for all other /api/** routes
+
                         .anyRequest().permitAll()
                 )
                 // Configure OAuth2 Resource Server support

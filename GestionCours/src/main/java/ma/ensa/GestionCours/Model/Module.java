@@ -47,7 +47,7 @@ public class Module {
     }
 
     public Semestre getSemestre() {
-        return semestre;
+        return this.semestre;
     }
 
     public void setSemestre(Semestre semestre) {

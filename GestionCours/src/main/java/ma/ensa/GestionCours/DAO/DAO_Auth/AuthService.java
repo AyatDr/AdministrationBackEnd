@@ -1,11 +1,15 @@
 package ma.ensa.GestionCours.DAO.DAO_Auth;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import ma.ensa.GestionCours.DAO.DAO_DIRECTEUR.DirecteurService;
 import ma.ensa.GestionCours.DAO.DAO_DIRECTEUR.EnsegnantService;
 import ma.ensa.GestionCours.DAO.DAO_DIRECTEUR.EtudiantService;
 import ma.ensa.GestionCours.controller.auth.AuthResponse;
 import ma.ensa.GestionCours.controller.auth.JwtUtil;
-import ma.ensa.GestionCours.Model.Directeur; // Importez vos modèles ici
+import org.springframework.security.core.Authentication;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import ma.ensa.GestionCours.Model.Directeur;
 import ma.ensa.GestionCours.Model.Prof;
 import ma.ensa.GestionCours.Model.Etudiant;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,9 +33,9 @@ public class AuthService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
 
-        private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
         public AuthResponse login(String email, String password) throws Exception {
             Object utilisateur = null;
@@ -96,7 +100,11 @@ public class AuthService {
             String token = JwtUtil.generateToken(email);
             logger.info("Login successful for user: {}", email);
             return new AuthResponse(utilisateur, nature, token);
+
         }
+
+
     }
+
 
 

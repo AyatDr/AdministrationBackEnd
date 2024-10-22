@@ -26,12 +26,6 @@ public class Prof {
     @Column(name = "email", nullable = false, length = 50)
     private String email;
 
-
-    // Relation One-to-One avec Formation
-    @OneToOne(mappedBy = "professeur", fetch = FetchType.LAZY)
-    @JsonBackReference // Évite les boucles infinies avec Formation
-    private Formation formation;
-
     // Relation One-to-Many avec Matiere
     @OneToMany(mappedBy = "professeur", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference // Gère la relation avec Matiere
@@ -40,7 +34,7 @@ public class Prof {
     // Getters et Setters
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {
@@ -48,7 +42,7 @@ public class Prof {
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public void setNom(String nom) {
@@ -56,7 +50,7 @@ public class Prof {
     }
 
     public String getPrenom() {
-        return prenom;
+        return this.prenom;
     }
 
     public void setPrenom(String prenom) {
@@ -64,7 +58,7 @@ public class Prof {
     }
 
     public String getMdp() {
-        return mdp;
+        return this.mdp;
     }
 
     public void setMdp(String mdp) {
@@ -72,23 +66,15 @@ public class Prof {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public Formation getFormation() {
-        return formation;
-    }
-
-    public void setFormation(Formation formation) {
-        this.formation = formation;
-    }
-
     public List<Matiere> getMatieres() {
-        return matieres;
+        return this.matieres;
     }
 
     public void setMatieres(List<Matiere> matieres) {

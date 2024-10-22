@@ -27,7 +27,7 @@ public class Directeur {
 
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {
@@ -35,7 +35,7 @@ public class Directeur {
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public void setNom(String nom) {
@@ -43,7 +43,7 @@ public class Directeur {
     }
 
     public String getPrenom() {
-        return prenom;
+        return this.prenom;
     }
 
     public void setPrenom(String prenom) {
@@ -51,7 +51,7 @@ public class Directeur {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -59,7 +59,7 @@ public class Directeur {
     }
 
     public String getMdp() {
-        return mdp;
+        return this.mdp;
     }
 
     public void setMdp(String mdp) {
