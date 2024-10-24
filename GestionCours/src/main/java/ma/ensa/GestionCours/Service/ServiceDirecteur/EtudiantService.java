@@ -5,6 +5,7 @@ import ma.ensa.GestionCours.Model.Etudiant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,4 +27,11 @@ public class EtudiantService implements IServiceEtudiant {
     public Optional<Etudiant> findById(Integer id) {
         return etudiantRepository.findById(id);
     }
+
+    @Override
+    public List<Etudiant> getAllEtudiants() {
+        return etudiantRepository.findAll();
+    }
+
+
 }

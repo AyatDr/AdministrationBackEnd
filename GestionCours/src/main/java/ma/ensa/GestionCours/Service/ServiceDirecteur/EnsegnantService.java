@@ -7,6 +7,7 @@ import ma.ensa.GestionCours.Model.Prof;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,6 +27,11 @@ public class EnsegnantService implements IServiceEnsegnant {
     @Override
     public Optional<Prof> findById(Integer id) {
         return enseignantRepository.findById(id);
+    }
+
+    @Override
+    public List<Prof> getAllProfesseurs() {
+        return enseignantRepository.findAll();
     }
 
 
