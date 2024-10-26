@@ -27,16 +27,16 @@ public class Semestre {
     // Relation Many-to-One avec Formation
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "fk_form", referencedColumnName = "id_form", nullable = false)
-    @JsonBackReference // Évite les boucles infinies avec Formation
+    @JsonBackReference() // Évite les boucles infinies avec Formation
     private Formation formation;
 
     // Relation One-to-Many avec Module
-    @OneToMany(mappedBy = "semestre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "semestre", cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
     @JsonManagedReference // Gère la relation avec Module
     private List<Module> modules;
 
     // Relation One-to-Many avec Etudiant
-    @OneToMany(mappedBy = "semestre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "semestre",  fetch = FetchType.LAZY)
     @JsonManagedReference // Gère la relation avec Etudiant
     private List<Etudiant> etudiants;
 

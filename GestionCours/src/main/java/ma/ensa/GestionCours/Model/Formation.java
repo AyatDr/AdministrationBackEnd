@@ -16,6 +16,10 @@ public class Formation {
     @Column(name = "label", nullable = false, length = 20)
     private String label;
 
+    @Column(name = "description", nullable = false, length = 50)
+    private String description;
+
+
 
 
 
@@ -23,12 +27,12 @@ public class Formation {
 
 
     // One-to-Many avec Semestre
-    @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference // Gère la relation avec Semestre
+    @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
+    @JsonManagedReference() // Gère la relation avec Semestre
     private List<Semestre> semestres;
 
     // One-to-Many avec Etudiant
-    @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "formation", fetch = FetchType.LAZY)
     @JsonManagedReference // Gère la relation avec Etudiant
     private List<Etudiant> etudiants;
 
@@ -48,6 +52,13 @@ public class Formation {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Semestre> getSemestres() {

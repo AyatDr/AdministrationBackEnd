@@ -16,11 +16,14 @@ public class Matiere {
 
     @Column(name = "label", nullable = false, length = 20)
     private String label;
+    @Column(name = "description", nullable = false, length = 50)
+    private String description;
 
     // Many-to-One avec Professeur
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "fk_prof", referencedColumnName = "id", nullable = false)
-    @JsonBackReference // Évite les boucles infinies avec Professeur
+   // Évite les boucles infinies avec Professeur
+    @JsonManagedReference
     private Prof professeur;
 
     // Many-to-One avec Module
@@ -30,14 +33,19 @@ public class Matiere {
     private Module module;
 
     // One-to-Many avec Cours
-    @OneToMany(mappedBy = "matiere", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "matiere",cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
     @JsonManagedReference // Gère la relation avec Cours
     private List<Cours> cours;
 
     // One-to-Many avec Note
-    @OneToMany(mappedBy = "matiere", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "matiere", cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
     @JsonManagedReference // Gère la relation avec Note
     private List<Note> notes;
+
+
+
+
+
 
     // Getters et Setters
 
@@ -87,5 +95,12 @@ public class Matiere {
 
     public void setNotes(List<Note> notes) {
         this.notes = notes;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

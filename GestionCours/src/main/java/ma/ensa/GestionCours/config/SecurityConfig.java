@@ -1,6 +1,8 @@
 package ma.ensa.GestionCours.config;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -51,9 +53,10 @@ public class SecurityConfig {
 
                         .requestMatchers("/api/login").permitAll()             // Autoriser l'accès à /api/login sans authentification
                         .requestMatchers("/api/me").authenticated()
-                        .requestMatchers("/api/formation/list").authenticated()
+                        .requestMatchers("/api/directeur/formation/list").authenticated()
+                        .requestMatchers("/api/directeur/**").authenticated()
+                        // Require authentication for all other /api/** routes
 
-                     // Require authentication for all other /api/** routes
 
                         .anyRequest().permitAll()
                 )
@@ -70,10 +73,13 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:4200")); // Allow Angular frontend
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));
+        configuration.setExposedHeaders(List.of("Authorization"));
+        configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration); // Apply to all routes
         return source;
     }
+
 }

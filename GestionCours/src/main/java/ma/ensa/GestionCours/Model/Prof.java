@@ -27,8 +27,8 @@ public class Prof {
     private String email;
 
     // Relation One-to-Many avec Matiere
-    @OneToMany(mappedBy = "professeur", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference // Gère la relation avec Matiere
+    @OneToMany(mappedBy = "professeur",  fetch = FetchType.LAZY)
+    @JsonBackReference // Gère la relation avec Matiere
     private List<Matiere> matieres;
 
     // Getters et Setters

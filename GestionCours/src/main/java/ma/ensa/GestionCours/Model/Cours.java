@@ -24,12 +24,12 @@ public class Cours {
     private Matiere matiere;
 
     // One-to-Many avec Lien
-    @OneToMany(mappedBy = "cours", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "cours", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference // Gère la relation avec Lien
     private List<Lien> liens;
 
     // One-to-Many avec Document
-    @OneToMany(mappedBy = "cours", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "cours",cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
     @JsonManagedReference // Gère la relation avec Document
     private List<Document> documents;
 
