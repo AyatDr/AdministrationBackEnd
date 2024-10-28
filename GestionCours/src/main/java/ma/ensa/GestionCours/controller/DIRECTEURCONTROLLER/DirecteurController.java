@@ -1,5 +1,5 @@
 package ma.ensa.GestionCours.controller.DIRECTEURCONTROLLER;
-import ma.ensa.GestionCours.DTO.*;
+import ma.ensa.GestionCours.DTO.DTO_DIRECTEUR.*;
 import ma.ensa.GestionCours.Model.*;
 import ma.ensa.GestionCours.Model.Module;
 import ma.ensa.GestionCours.Service.ServiceDirecteur.*;

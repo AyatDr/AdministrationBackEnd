@@ -1,4 +1,4 @@
-package ma.ensa.GestionCours.DTO;
+package ma.ensa.GestionCours.DTO.DTO_DIRECTEUR;
 
 public class FormationDTO {
     private String label;

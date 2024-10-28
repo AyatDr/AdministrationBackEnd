@@ -1,8 +1,5 @@
-package ma.ensa.GestionCours.DTO;
+package ma.ensa.GestionCours.DTO.DTO_DIRECTEUR;
 
-
-import java.time.LocalDate;
-import java.util.List;
 
 public class SemestreDTO {
     private String label;
