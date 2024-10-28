@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface InterfaceFormation extends JpaRepository<Formation, Integer> {
-    Optional<Formation> findById(Integer id);
+
 }

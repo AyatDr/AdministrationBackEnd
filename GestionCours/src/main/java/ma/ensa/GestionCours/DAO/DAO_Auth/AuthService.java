@@ -1,8 +1,6 @@
 package ma.ensa.GestionCours.DAO.DAO_Auth;
 
-import ma.ensa.GestionCours.Service.ServiceDirecteur.DirecteurService;
-import ma.ensa.GestionCours.Service.ServiceDirecteur.EnsegnantService;
-import ma.ensa.GestionCours.Service.ServiceDirecteur.EtudiantService;
+import ma.ensa.GestionCours.Service.ServiceDirecteur.*;
 import ma.ensa.GestionCours.controller.auth.AuthResponse;
 import ma.ensa.GestionCours.controller.auth.JwtUtil;
 import ma.ensa.GestionCours.Model.Directeur;
@@ -16,9 +14,9 @@ import org.slf4j.LoggerFactory;
 @Service
 public class AuthService {
 
-    private final EtudiantService etudiantService;
-    private final EnsegnantService enseignantService;
-    private final DirecteurService directeurService;
+    private final IServiceEtudiant etudiantService;
+    private final IServiceEnsegnant enseignantService;
+    private final IServiceDirecteur directeurService;
     private final PasswordEncoder passwordEncoder;
 
     public AuthService(EtudiantService etudiantService, EnsegnantService enseignantService,

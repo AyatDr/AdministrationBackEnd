@@ -47,6 +47,8 @@ public class AuthController {
         }
     }
 
+
+
     @GetMapping("/me")
     public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal Jwt jwt) {
         String userEmail = jwt.getSubject();
