@@ -440,6 +440,12 @@ public class DirecteurController {
     }
 
 
+    @GetMapping("/etudiant/{etudiantId}/matiere/{matiereId}")
+    public float getNoteEtudiantByMatiere(@PathVariable Integer etudiantId ,@PathVariable Integer matiereId) {
+        return etudiantService.getNoteEtudiantByMatiere(etudiantId ,matiereId );
+    }
+
+
 
 
 

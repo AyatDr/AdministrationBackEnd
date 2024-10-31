@@ -16,4 +16,7 @@ public interface InterfaceEtudiant extends JpaRepository<Etudiant, Long> {
     @Query("SELECT e.semestre FROM Etudiant e WHERE e.id = :etudiantId")
     Semestre findSemestreByEtudiantId(@Param("etudiantId") Integer etudiantId);
 
+    @Query("SELECT n.valeur FROM Note n WHERE n.etudiant.id = :etudiantId AND n.matiere.id = :matiereId")
+    Float findNoteMatiereByEtudiantId(@Param("etudiantId") Integer etudiantId, @Param("matiereId") Integer matiereId);
+
 }

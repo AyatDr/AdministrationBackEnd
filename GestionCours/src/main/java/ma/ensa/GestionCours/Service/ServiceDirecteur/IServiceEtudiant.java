@@ -13,5 +13,6 @@ public interface IServiceEtudiant {
     public Optional<Etudiant> findById(Integer id);
     public List<Etudiant> getAllEtudiants();
     public Semestre getSemestreByEtudiant(Integer id);
+    public float getNoteEtudiantByMatiere(Integer idEtudiant , Integer idMatiere);
 
 }

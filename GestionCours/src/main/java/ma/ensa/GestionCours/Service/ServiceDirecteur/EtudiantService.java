@@ -42,6 +42,11 @@ public class EtudiantService implements IServiceEtudiant {
     public Semestre getSemestreByEtudiant(Integer id) {
         return   etudiantRepository.findSemestreByEtudiantId(id);
     }
+
+    @Override
+    public float getNoteEtudiantByMatiere(Integer idEtudiant , Integer idMatiere) {
+        return   etudiantRepository.findNoteMatiereByEtudiantId(idEtudiant , idMatiere );
+    }
 }
 
 
