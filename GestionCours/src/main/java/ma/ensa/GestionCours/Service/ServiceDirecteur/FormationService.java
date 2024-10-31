@@ -35,4 +35,9 @@ public class FormationService implements IServiceFormation {
     public void deleteFormation(Integer formationId) {
         InterfaceFormation.deleteById(formationId);
     }
+    @Override
+    public Formation getFormationEtudiant(Integer id) {
+
+        return  InterfaceFormation.findFormationByStudentId(id);
+    }
 }

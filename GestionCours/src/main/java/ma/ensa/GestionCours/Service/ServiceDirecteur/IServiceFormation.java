@@ -11,4 +11,5 @@ public interface IServiceFormation {
     public Formation saveFormation(Formation formation);
     public Optional<Formation> findById(Integer id);
     public void deleteFormation(Integer formationId);
+    public Formation getFormationEtudiant(Integer id);
 }

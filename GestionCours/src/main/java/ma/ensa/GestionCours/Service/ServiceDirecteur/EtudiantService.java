@@ -1,7 +1,9 @@
 package ma.ensa.GestionCours.Service.ServiceDirecteur;
 
 import ma.ensa.GestionCours.DAO.DAO_DIRECTEUR.InterfaceEtudiant;
+import ma.ensa.GestionCours.DAO.DAO_PROFESSEUR.FormationRepository;
 import ma.ensa.GestionCours.Model.Etudiant;
+import ma.ensa.GestionCours.Model.Formation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +14,12 @@ import java.util.Optional;
 public class EtudiantService implements IServiceEtudiant {
 
     private final InterfaceEtudiant etudiantRepository;
+    private final FormationRepository formationRepository;
 
     @Autowired
-    public EtudiantService(InterfaceEtudiant etudiantRepository) {
+    public EtudiantService(InterfaceEtudiant etudiantRepository, FormationRepository formationRepository) {
         this.etudiantRepository = etudiantRepository;
+        this.formationRepository = formationRepository;
     }
 
     @Override
@@ -35,3 +39,7 @@ public class EtudiantService implements IServiceEtudiant {
 
 
 }
+
+
+
+

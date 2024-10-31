@@ -11,4 +11,5 @@ public interface IServiceEtudiant {
     public Optional<Etudiant> findByEmail(String email);
     public Optional<Etudiant> findById(Integer id);
     public List<Etudiant> getAllEtudiants();
+
 }

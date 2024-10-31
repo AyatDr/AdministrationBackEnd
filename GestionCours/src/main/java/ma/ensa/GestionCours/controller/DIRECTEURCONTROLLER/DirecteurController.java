@@ -429,7 +429,10 @@ public class DirecteurController {
     }
 
 
-
+    @GetMapping("/formationEtudiant/{id}")
+    public Formation getFormationEtudiant(@PathVariable Integer id) {
+        return formationService.getFormationEtudiant(id);
+    }
 
 
 
