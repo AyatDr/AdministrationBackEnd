@@ -434,6 +434,13 @@ public class DirecteurController {
         return formationService.getFormationEtudiant(id);
     }
 
+    @GetMapping("/SemestreByEtudiant/{id}")
+    public Semestre getSemestreByEtudiant(@PathVariable Integer id) {
+        return etudiantService.getSemestreByEtudiant(id);
+    }
+
+
+
 
 
 }

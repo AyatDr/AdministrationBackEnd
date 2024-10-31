@@ -36,7 +36,6 @@ public class AuthService {
             String nature = null;
 
 
-
             logger.info("Attempting to log in user with email: {}", email);
 
             // Vérification de l'étudiant

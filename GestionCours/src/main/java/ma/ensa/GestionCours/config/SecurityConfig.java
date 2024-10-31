@@ -53,9 +53,8 @@ public class SecurityConfig {
 
                         .requestMatchers("/api/login").permitAll()             // Autoriser l'accès à /api/login sans authentification
                         .requestMatchers("/api/me").authenticated()
-                        .requestMatchers("/api/directeur/formation/list").authenticated()
                         .requestMatchers("/api/directeur/**").authenticated()
-                        // Require authentication for all other /api/** routes
+
 
 
                         .anyRequest().permitAll()

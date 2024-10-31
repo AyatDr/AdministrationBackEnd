@@ -37,7 +37,7 @@ public class Semestre {
 
     // Relation One-to-Many avec Etudiant
     @OneToMany(mappedBy = "semestre",  fetch = FetchType.LAZY)
-    @JsonManagedReference // Gère la relation avec Etudiant
+    @JsonBackReference// Gère la relation avec Etudiant
     private List<Etudiant> etudiants;
 
     // Getters et Setters

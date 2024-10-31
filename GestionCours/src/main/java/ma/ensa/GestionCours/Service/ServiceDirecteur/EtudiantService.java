@@ -4,6 +4,7 @@ import ma.ensa.GestionCours.DAO.DAO_DIRECTEUR.InterfaceEtudiant;
 import ma.ensa.GestionCours.DAO.DAO_PROFESSEUR.FormationRepository;
 import ma.ensa.GestionCours.Model.Etudiant;
 import ma.ensa.GestionCours.Model.Formation;
+import ma.ensa.GestionCours.Model.Semestre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +38,10 @@ public class EtudiantService implements IServiceEtudiant {
         return etudiantRepository.findAll();
     }
 
-
+    @Override
+    public Semestre getSemestreByEtudiant(Integer id) {
+        return   etudiantRepository.findSemestreByEtudiantId(id);
+    }
 }
 
 
