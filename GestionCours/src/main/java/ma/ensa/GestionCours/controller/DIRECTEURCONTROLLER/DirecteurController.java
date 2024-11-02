@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -34,6 +36,8 @@ public class DirecteurController {
     private IServiceProf profService;
     @Autowired
     private IServiceCours coursService;
+    @Autowired
+    private IServiceDocument documentService;
 
     @GetMapping("directeur/formation/list")
     public List<Formation> getAllFormations() {
@@ -444,6 +448,19 @@ public class DirecteurController {
     public float getNoteEtudiantByMatiere(@PathVariable Integer etudiantId ,@PathVariable Integer matiereId) {
         return etudiantService.getNoteEtudiantByMatiere(etudiantId ,matiereId );
     }
+
+    @GetMapping("/GetDocumetEtudiant/{id}")
+    public ResponseEntity<Map<String, String>> getDocumentPathById(@PathVariable Integer id) {
+        String documentPath = documentService.getDocumentUrlById(id);
+        if (documentPath != null) {
+            Map<String, String> response = new HashMap<>();
+            response.put("url", documentPath); // Wrap the path in a JSON structure
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
 
 

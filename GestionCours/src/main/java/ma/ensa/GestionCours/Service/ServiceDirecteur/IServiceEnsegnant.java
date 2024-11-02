@@ -1,8 +1,6 @@
 package ma.ensa.GestionCours.Service.ServiceDirecteur;
 
-import ma.ensa.GestionCours.Model.Formation;
 import ma.ensa.GestionCours.Model.Prof;
-
 import java.util.List;
 import java.util.Optional;
 
