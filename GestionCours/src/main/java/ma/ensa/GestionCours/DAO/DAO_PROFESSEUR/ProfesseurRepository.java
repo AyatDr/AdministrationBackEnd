@@ -1,6 +1,5 @@
 package ma.ensa.GestionCours.DAO.DAO_PROFESSEUR;
 
-import ma.ensa.GestionCours.Model.Directeur;
 import ma.ensa.GestionCours.Model.Prof;
 import org.springframework.data.jpa.repository.JpaRepository;
 
